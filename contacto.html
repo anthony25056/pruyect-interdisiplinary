@@ -24,7 +24,8 @@
     <main>
         <section class="contacto-section">
             <h2>Contacto</h2>
-            <form class="form-contacto">
+            <!-- Cambia la línea del form aquí -->
+            <form class="form-contacto" action="https://formsubmit.co/marcilloanthonymiguel@gmail.com" method="POST">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
@@ -41,5 +42,41 @@
             </form>
         </section>
     </main>
+
+  <script>
+    // MENÚ RESPONSIVE JS
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('main-nav');
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('open');
+        toggle.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Cierra menú al hacer click fuera o en un enlace
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        }
+      });
+
+      // Mostrar mensaje si ?enviado=true
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("enviado") === "true") {
+        document.getElementById("mensajeExito").style.display = "block";
+      }
+    });
+  </script>
+    
 </body>
 </html>
