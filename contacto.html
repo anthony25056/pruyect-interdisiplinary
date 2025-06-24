@@ -50,63 +50,39 @@
   </footer>
 
   <script>
-    // MENÚ RESPONSIVE JS
     document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.getElementById('menu-toggle');
-      const nav = document.getElementById('main-nav');
-      toggle.addEventListener('click', function () {
-        nav.classList.toggle('open');
-        toggle.classList.toggle('open');
-        document.body.classList.toggle('menu-open');
-      });
+  // ... (tu código del menú)
 
-      // Cierra menú al hacer click fuera o en un enlace
-      nav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          nav.classList.remove('open');
-          toggle.classList.remove('open');
-          document.body.classList.remove('menu-open');
-        });
+  // ENVÍO AJAX DEL FORMULARIO DE CONTACTO
+  const form = document.getElementById('formulario-contacto');
+  const msgExito = document.getElementById('mensajeExito');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch('https://formsubmit.co/ajax/marcilloanthonymiguel@gmail.com', {
+        method: 'POST',
+        body: data
+      })
+      .then(response => response.json())
+      .then(result => {
+        form.reset();
+        msgExito.style.display = "block";
+        // Siempre refresca la página a los 2 segundos:
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
+      })
+      .catch(error => {
+        alert('Ocurrió un error al enviar el formulario.');
+        // También refresca si ocurre error (opcional):
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
       });
-      document.addEventListener('click', e => {
-        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
-          nav.classList.remove('open');
-          toggle.classList.remove('open');
-          document.body.classList.remove('menu-open');
-        }
-      });
-
-      // ENVÍO AJAX DEL FORMULARIO DE CONTACTO
-      const form = document.getElementById('formulario-contacto');
-      const msgExito = document.getElementById('mensajeExito');
-      if(form){
-        form.addEventListener('submit', function(e){
-          e.preventDefault();
-          const data = new FormData(form);
-          fetch('https://formsubmit.co/ajax/marcilloanthonymiguel@gmail.com', {
-            method: 'POST',
-            body: data
-          })
-          .then(response => response.json())
-          .then(result => {
-            if(result.success === "true" || result.success === true){
-              form.reset();
-              msgExito.style.display = "block";
-              setTimeout(() => {
-                msgExito.style.display = "none";
-                location.reload();
-              }, 2000);
-            }else{
-              alert('Ocurrió un error al enviar el mensaje. Intenta de nuevo.');
-            }
-          })
-          .catch(error => {
-            alert('Ocurrió un error al enviar el formulario.');
-          });
-        });
-      }
-
     });
+  }
+});
   </script>
 </body>
 </html>
