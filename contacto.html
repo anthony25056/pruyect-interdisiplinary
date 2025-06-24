@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <img src="imagenes/" alt="Logo de la plataforma" class="logo-header">
+    <img src="imagenes/logo.png" alt="Logo de la plataforma" class="logo-header">
     <h1>Proyectos Interdisciplinarios</h1>
     <nav id="main-nav">
       <a href="index.html">Inicio</a>
@@ -24,7 +24,9 @@
     <main>
         <section class="contacto-section">
             <h2>Contacto</h2>
-            <!-- Cambia la línea del form aquí -->
+            <div id="mensajeExito" style="display:none; color:green; text-align:center;">
+              ¡Mensaje enviado con éxito!
+            </div>
             <form class="form-contacto" action="https://formsubmit.co/marcilloanthonymiguel@gmail.com" method="POST">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
@@ -47,7 +49,6 @@
     &copy; 2025 DreamTech Hexa. Todos los derechos reservados.
   </footer>
 
-    
   <script>
     // MENÚ RESPONSIVE JS
     document.addEventListener("DOMContentLoaded", function () {
@@ -78,10 +79,10 @@
       // Mostrar mensaje si ?enviado=true
       const params = new URLSearchParams(window.location.search);
       if (params.get("enviado") === "true") {
-        document.getElementById("mensajeExito").style.display = "block";
+        const msg = document.getElementById("mensajeExito");
+        if (msg) msg.style.display = "block";
       }
     });
   </script>
-    
 </body>
 </html>
