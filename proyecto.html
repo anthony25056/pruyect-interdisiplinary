@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>DreamTech Hexa - Proyectos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="proyecto.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/iconos/Logo.jpeg" alt="Logo de la plataforma" class="logo-header">
+    <h1>Proyectos Interdisciplinarios</h1>
+    <nav id="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="proyecto.html">Proyectos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="proyecto-section">
+      <div class="tarjeta-multiple-container">
+        <!-- Tarjeta 1 -->
+        <div class="tarjeta-zona" id="zona1">
+          <div class="card card1" id="card1">
+            <span class="title">Proyecto Lengua</span>
+            <span class="subtexto">Un espacio para explorar la creatividad y el análisis del lenguaje.</span>
+            <button class="abrir-btn" data-card="1">Abrir</button>
+          </div>
+          <div class="parrafo" id="parrafo1">
+            <p>
+              Este proyecto busca fomentar el desarrollo de habilidades comunicativas y literarias en los estudiantes, promoviendo la comprensión lectora, la expresión escrita y el pensamiento crítico a través de actividades dinámicas y colaborativas.
+            </p>
+          </div>
+        </div>
+        <!-- Tarjeta 2 -->
+        <div class="tarjeta-zona" id="zona2">
+          <div class="card card2" id="card2">
+            <span class="title">Proyecto Matemáticas</span>
+            <span class="subtexto">Descubre el mundo de los números y la lógica de forma divertida.</span>
+            <button class="abrir-btn" data-card="2">Abrir</button>
+          </div>
+          <div class="parrafo" id="parrafo2">
+            <p>
+              En este proyecto se promueve el razonamiento lógico y el pensamiento analítico mediante juegos, retos y actividades prácticas que facilitan la comprensión de conceptos matemáticos fundamentales.
+            </p>
+          </div>
+        </div>
+        <!-- Tarjeta 3 -->
+        <div class="tarjeta-zona" id="zona3">
+          <div class="card card3" id="card3">
+            <span class="title">Proyecto Ciencias</span>
+            <span class="subtexto">Experimenta, observa y aprende sobre el mundo natural.</span>
+            <button class="abrir-btn" data-card="3">Abrir</button>
+          </div>
+          <div class="parrafo" id="parrafo3">
+            <p>
+              Fomenta la curiosidad científica a través de experimentos, observaciones y proyectos de investigación que acercan a los estudiantes al método científico y los fenómenos naturales.
+            </p>
+          </div>
+        </div>
+        <!-- Tarjeta 4 -->
+        <div class="tarjeta-zona" id="zona4">
+          <div class="card card4" id="card4">
+            <span class="title">Proyecto Historia</span>
+            <span class="subtexto">Viaja al pasado y comprende los sucesos que forjaron la humanidad.</span>
+            <button class="abrir-btn" data-card="4">Abrir</button>
+          </div>
+          <div class="parrafo" id="parrafo4">
+            <p>
+              Este proyecto invita a explorar eventos históricos y sus protagonistas a través de narrativas, debates y recursos visuales que facilitan la comprensión del pasado y su influencia en el presente.
+            </p>
+          </div>
+        </div>
+        <!-- Tarjeta 5 -->
+        <div class="tarjeta-zona" id="zona5">
+          <div class="card card5" id="card5">
+            <span class="title">Proyecto Tecnología</span>
+            <span class="subtexto">Aprende sobre innovación, programación y nuevas herramientas digitales.</span>
+            <button class="abrir-btn" data-card="5">Abrir</button>
+          </div>
+          <div class="parrafo" id="parrafo5">
+            <p>
+              Desarrolla competencias digitales mediante talleres de programación, robótica y uso responsable de la tecnología, preparando a los estudiantes para los retos del siglo XXI.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 DreamTech Hexa. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // MENÚ RESPONSIVE JS
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('main-nav');
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('open');
+        toggle.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Cierra menú al hacer click fuera o en un enlace
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        }
+      });
+
+      // TARJETAS INTERACTIVAS
+      const abrirBtns = document.querySelectorAll('.abrir-btn');
+      let abierta = null;
+
+      abrirBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const cardIndex = btn.getAttribute('data-card');
+          const zona = document.getElementById('zona' + cardIndex);
+
+          // Cierra cualquier otra abierta
+          if (abierta && abierta !== cardIndex) {
+            document.getElementById('zona' + abierta).classList.remove('abierta');
+            document.querySelector('.abrir-btn[data-card="' + abierta + '"]').textContent = "Abrir";
+            abierta = null;
+          }
+
+          // Alterna abrir/cerrar de la seleccionada
+          if (!zona.classList.contains('abierta')) {
+            zona.classList.add('abierta');
+            btn.textContent = "Cerrar";
+            abierta = cardIndex;
+          } else {
+            zona.classList.remove('abierta');
+            btn.textContent = "Abrir";
+            abierta = null;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
