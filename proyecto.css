@@ -1,3 +1,4 @@
+/* Colores principales */
 :root {
   --verde-principal: #4CAF50;
   --verde-claro: #A5D6A7;
@@ -39,7 +40,7 @@ body {
   margin: 0;
 }
 
-/* HEADER y NAV */
+/* HEADER y NAV */ 
 header {
   background-color: var(--verde-principal);
   color: var(--blanco);
@@ -54,7 +55,7 @@ header {
   z-index: 10;
 }
 .logo-header {
-  width: 85px;
+  width: 70px;
   height: 85px;
   border-radius: 50%;
   box-shadow: 0 2px 8px var(--verde-claro);
@@ -188,7 +189,7 @@ footer {
   box-shadow: 0 -2px 8px var(--verde-claro);
 }
 
-/************* TARJETAS ***************/
+/********** TARJETAS DISEÑO ************/
 .proyecto-section {
   width: 100%;
   min-height: 100vh;
@@ -230,8 +231,8 @@ footer {
   align-items: center;
 }
 .tarjeta-zona.abierta .card {
-  margin: 0 60px 0 0; /* Más espacio con el párrafo */
-  transform: translateX(40px); /* Mueve la tarjeta un poco a la derecha */
+  margin: 0 60px 0 0; 
+  transform: translateX(40px); 
 }
 .tarjeta-zona.abierta .parrafo {
   display: flex;
@@ -252,8 +253,8 @@ footer {
   gap: 1.1rem;
   background-clip: padding-box;
   position: relative;
-  border: 2.5px solid #cccccc; /* default, overwritten in each cardX */
-  background: #f7f7f7;         /* default, overwritten in each cardX */
+  border: 2.5px solid #cccccc; 
+  background: #f7f7f7;         
 }
 /* COLORES INDIVIDUALES PARA CADA TARJETA */
 .card1 { background: var(--tarjeta1-fondo); border-color: var(--tarjeta1-borde);}
@@ -334,6 +335,24 @@ footer {
   .tarjeta-zona.abierta .card {
     margin: 0 0 18px 0;
     transform: none;
+  }
+}
+/* adaptacion celulares */
+@media (max-width: 600px) {
+  .banner {
+    padding: 20px 5vw;
+    width: 90vw;
+    gap: 16px;
+  }
+  .logo-header {
+    width: 50px;
+    height: 60px;
+  }
+  .titulo {
+    font-size: 20px;
+  }
+  h1{
+    font-size: 15px;
   }
 }
 @keyframes fadeInRight {

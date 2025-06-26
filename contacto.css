@@ -62,3 +62,28 @@
 .form-contacto button[type="submit"]:hover {
     background: #357ABD;
 }
+/* adaptar formualario para celulares*/
+@media (max-width: 600px) {
+    .contacto-section {
+        padding: 20px 15px;
+        margin: 20px auto;
+        width: 90%;
+    }
+    
+    .form-contacto h2 {
+        font-size: 1.5em;
+    }
+    
+    .form-contacto input[type="text"],
+    .form-contacto input[type="email"],
+    .form-contacto textarea {
+        font-size: 0.9em;
+    }
+    
+    .form-contacto button[type="submit"] {
+        font-size: 1em;
+        padding: 10px;
+    }
+    
+}
+/* Fin adaptar celulares */

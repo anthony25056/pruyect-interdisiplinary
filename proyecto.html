@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>DreamTech Hexa - Proyectos</title>
+  <title>Proyectos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/jpg" href="imagenes/logo.jpg">
   <link rel="stylesheet" href="proyecto.css" />
 </head>
 <body>
   <header>
-    <img src="assets/iconos/Logo.jpeg" alt="Logo de la plataforma" class="logo-header">
+    <img src="imagenes/logo.jpg" alt="Logo" class="logo-header">
     <h1>Proyectos Interdisciplinarios</h1>
     <nav id="main-nav">
       <a href="index.html">Inicio</a>
@@ -109,7 +110,9 @@ La declaratoria como Ciudad Patrimonio Cultural Nacional implica un compromiso c
   </footer>
 
   <script>
-    // MENÚ RESPONSIVE JS
+
+    // Menu responsive JavaScript //
+
     document.addEventListener("DOMContentLoaded", function () {
       const toggle = document.getElementById('menu-toggle');
       const nav = document.getElementById('main-nav');
@@ -119,7 +122,7 @@ La declaratoria como Ciudad Patrimonio Cultural Nacional implica un compromiso c
         document.body.classList.toggle('menu-open');
       });
 
-      // Cierra menú al hacer click fuera o en un enlace
+      // cerrar menu al hacer click //
       nav.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
           nav.classList.remove('open');
@@ -135,7 +138,7 @@ La declaratoria como Ciudad Patrimonio Cultural Nacional implica un compromiso c
         }
       });
 
-      // TARJETAS INTERACTIVAS
+      // tarjetas interactivas //
       const abrirBtns = document.querySelectorAll('.abrir-btn');
       let abierta = null;
 
@@ -144,14 +147,14 @@ La declaratoria como Ciudad Patrimonio Cultural Nacional implica un compromiso c
           const cardIndex = btn.getAttribute('data-card');
           const zona = document.getElementById('zona' + cardIndex);
 
-          // Cierra cualquier otra abierta
+          // Cierra cualquier otra abierta // Opcional no me gusta mucho
           if (abierta && abierta !== cardIndex) {
             document.getElementById('zona' + abierta).classList.remove('abierta');
             document.querySelector('.abrir-btn[data-card="' + abierta + '"]').textContent = "Abrir";
             abierta = null;
           }
 
-          // Alterna abrir/cerrar de la seleccionada
+          // Alterna abrir/cerrar de la seleccionada //
           if (!zona.classList.contains('abierta')) {
             zona.classList.add('abierta');
             btn.textContent = "Cerrar";
@@ -166,13 +169,13 @@ La declaratoria como Ciudad Patrimonio Cultural Nacional implica un compromiso c
     });
   </script>
 
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <df-messenger
   intent="WELCOME"
   chat-title="colegio"
   agent-id="1b2321b1-2b68-46aa-8443-d81d24b85934"
   language-code="es"
 ></df-messenger>
-  
+
 </body>
 </html>
